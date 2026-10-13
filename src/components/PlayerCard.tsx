@@ -79,12 +79,28 @@ export function PlayerCard({ atleta, tipoOrdenacao, index = 0 }: PlayerCardProps
       ? 'bg-gray-50/50 dark:bg-gray-800/50'
       : 'bg-white dark:bg-gray-900';
 
+  const siglaPosicao: Record<number, string> = {
+    1: 'GOL',
+    2: 'LAT',
+    3: 'ZAG',
+    4: 'MEI',
+    5: 'ATA',
+    6: 'TEC',
+  };
+
   return (
     <article
-      className={`flex-none w-[calc(85vw-48px)] max-w-[310px] snap-start rounded-[20px] p-5 shadow-sm border-5 flex flex-col justify-between gap-4 animate-fade-slide-up transition-colors duration-200 ${borderColor} ${bgColor}`}
+      // 👇 Adicionado: relative overflow-hidden
+      className={`relative overflow-hidden flex-none w-[calc(85vw-48px)] max-w-[310px] snap-start rounded-[20px] p-5 shadow-sm border-5 flex flex-col justify-between gap-4 animate-fade-slide-up transition-colors duration-200 ${borderColor} ${bgColor}`}
       style={{ animationDelay: delay }}
     >
-      <div className="flex items-center gap-3.5">
+      {/* 👇 NOVA MARCA D'ÁGUA DE POSIÇÃO */}
+      <div className="absolute -right-0 text-[76px] font-black italic leading-none tracking-tighter text-black/[0.03] dark:text-white/[0.03] select-none pointer-events-none z-0 p-3">
+        {siglaPosicao[atleta.posicao_id]}
+      </div>
+
+      {/* Conteúdo do Card (Adicionado relative z-10 para ficar acima da marca d'água) */}
+      <div className="relative z-10 flex items-center gap-3.5">
         <img
           src={
             atleta.foto ||
@@ -111,9 +127,11 @@ export function PlayerCard({ atleta, tipoOrdenacao, index = 0 }: PlayerCardProps
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-2 py-4 border-y border-dashed border-gray-100 dark:border-gray-700">
+      <div className="relative z-10 grid grid-cols-4 gap-2 py-4 border-y border-dashed border-gray-200 dark:border-gray-700">
         <div className="flex flex-col gap-0.5">
-          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">Preço</span>
+          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">
+            Preço
+          </span>
           <span
             className={`text-sm font-bold ${isSemSaldoTitular && !escaladoTitular && !escaladoReserva ? 'text-red-500' : 'text-gray-900 dark:text-gray-100'}`}
           >
@@ -121,7 +139,9 @@ export function PlayerCard({ atleta, tipoOrdenacao, index = 0 }: PlayerCardProps
           </span>
         </div>
         <div className="flex flex-col gap-0.5">
-          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">Média</span>
+          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">
+            Média
+          </span>
           <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {formatarNumero(atleta.media)}
           </span>
@@ -130,13 +150,17 @@ export function PlayerCard({ atleta, tipoOrdenacao, index = 0 }: PlayerCardProps
           </span>
         </div>
         <div className="flex flex-col gap-0.5">
-          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">Mínimo</span>
+          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">
+            Mínimo
+          </span>
           <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {formatarNumero(atleta.minimo)}
           </span>
         </div>
         <div className="flex flex-col gap-0.5">
-          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">Pts Esper.</span>
+          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">
+            Pts Esper.
+          </span>
           <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {formatarNumero(atleta.pontuacaoEsperada)}
           </span>
