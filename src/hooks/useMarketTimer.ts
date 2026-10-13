@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface MarketTimerProps {
   fechamento?: number;
@@ -13,6 +13,8 @@ export function useMarketTimer({
   isMercadoAberto,
   setIsMercadoAberto,
 }: MarketTimerProps) {
+  const inicializadoRef = useRef(false);
+
   const [tempoRestante, setTempoRestante] = useState(() => {
     // Agora a leitura fica super semântica
     if (!isAbertoAPI) {
@@ -22,10 +24,19 @@ export function useMarketTimer({
   });
 
   useEffect(() => {
+    // Na primeira carga dos dados de status, se o mercado estiver fechado, define como padrão "Ao Vivo"
+    if (!inicializadoRef.current) {
+      inicializadoRef.current = true;
+      if (!isAbertoAPI) {
+        setIsMercadoAberto(false);
+      }
+    }
+  }, [isAbertoAPI, setIsMercadoAberto]);
+
+  useEffect(() => {
     // CASO 1: API oficial diz que fechou ou está em manutenção
     if (!isAbertoAPI) {
       setTempoRestante({ dias: 0, horas: 0, minutos: 0, segundos: 0, fechado: true });
-      if (isMercadoAberto) setIsMercadoAberto(false);
       return;
     }
 
@@ -39,7 +50,6 @@ export function useMarketTimer({
       // CASO 2: O tempo esgotou localmente
       if (diferenca <= 0) {
         setTempoRestante({ dias: 0, horas: 0, minutos: 0, segundos: 0, fechado: true });
-        if (isMercadoAberto) setIsMercadoAberto(false);
         return;
       }
 

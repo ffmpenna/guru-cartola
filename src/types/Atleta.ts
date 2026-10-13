@@ -4,15 +4,23 @@
 export interface Scout {
   G?: number; // Gol
   A?: number; // Assistência
-  DS?: number; // Desarme
-  SG?: number; // Jogo sem sofrer gol
+  FT?: number; // Finalização na trave
   FD?: number; // Finalização defendida
   FF?: number; // Finalização pra fora
   FS?: number; // Falta sofrida
-  CA?: number; // Cartão amarelo
-  FC?: number; // Falta cometida
+  PS?: number; // Penalti sofrido
+  PP?: number; // Penalti perdido
   I?: number; // Impedimento
-  PI?: number; // Passe incompleto
+  DP?: number; // Defesa de penalti
+  SG?: number; // Jogo sem sofrer gol
+  DE?: number; // Defesa
+  DS?: number; // Desarme
+  GC?: number; // Gol contra
+  CV?: number; // Cartão Vermelho
+  CA?: number; // Cartão amarelo
+  GS?: number; // Gol sofrido
+  FC?: number; // Falta cometida
+  PC?: number; // Penalti cometido
   // Adicione outras siglas se necessário
 }
 

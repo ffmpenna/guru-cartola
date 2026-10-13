@@ -70,12 +70,11 @@ export function SmartHeader({
           <div className="flex p-1 bg-gray-100 dark:bg-gray-800 rounded-xl border border-gray-200/60 dark:border-gray-700/60 shadow-inner">
             <button
               onClick={() => setIsMercadoAberto(true)}
-              disabled={tempoRestante.fechado}
-              className={`px-3.5 py-1.5 text-[10px] font-black uppercase tracking-wider rounded-lg transition-all ${
+              className={`px-3.5 py-1.5 text-[10px] font-black uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
                 isMercadoAberto
                   ? 'bg-white dark:bg-gray-700 text-orange-500 shadow-sm'
                   : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
-              } ${tempoRestante.fechado ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
+              }`}
             >
               Escalar
             </button>
