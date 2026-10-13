@@ -18,8 +18,8 @@ export function MatchesTicker({ partidas, isLoading }: MatchesTickerProps) {
 
   if (isLoading) {
     return (
-      <div className="w-full h-[90px] bg-gray-200/50 animate-pulse rounded-2xl mb-8 flex items-center justify-center">
-        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+      <div className="w-full h-[90px] bg-gray-200/50 dark:bg-gray-800/50 animate-pulse rounded-2xl mb-8 flex items-center justify-center">
+        <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
           Carregando Jogos...
         </span>
       </div>
@@ -43,16 +43,16 @@ export function MatchesTicker({ partidas, isLoading }: MatchesTickerProps) {
   });
 
   return (
-    <div className="w-full mb-8 relative px-6 md:px-0">
+    <div className="w-full mb-8 relative md:px-0">
       <div className="flex items-center gap-2 mb-3">
-        <h2 className="text-sm font-extrabold text-gray-900 tracking-tight uppercase">
+        <h2 className="text-sm font-extrabold text-gray-900 dark:text-gray-100 tracking-tight uppercase">
           Rodada Atual
         </h2>
       </div>
 
       <div
         ref={containerRef}
-        className="flex overflow-x-auto gap-3 px-6 pb-6 pr-[64px] snap-x md:px-0 md:pr-[80px] max-md:[&::-webkit-scrollbar]:hidden max-md:[-ms-overflow-style:none] max-md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:block md:[&::-webkit-scrollbar]:h-1.5 md:[&::-webkit-scrollbar-track]:bg-transparent md:[&::-webkit-scrollbar-thumb]:bg-gray-300 md:[&::-webkit-scrollbar-thumb]:rounded-full"
+        className="flex overflow-x-auto gap-3 px-6 pb-6 pr-[64px] snap-x md:px-0 md:pr-[80px] max-md:[&::-webkit-scrollbar]:hidden max-md:[-ms-overflow-style:none] max-md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:block md:[&::-webkit-scrollbar]:h-1.5 md:[&::-webkit-scrollbar-track]:bg-transparent md:[&::-webkit-scrollbar-thumb]:bg-gray-300 md:dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 md:[&::-webkit-scrollbar-thumb]:rounded-full"
       >
         {/* 👇 2. RENDERIZANDO O ARRAY ORDENADO */}
         {partidasOrdenadas.map((p) => {
@@ -93,7 +93,7 @@ export function MatchesTicker({ partidas, isLoading }: MatchesTickerProps) {
           return (
             <article
               key={p.id}
-              className={`flex-none snap-start bg-white border rounded-xl py-3 px-5 shadow-sm flex flex-col items-center justify-between min-w-[150px] transition-colors ${!p.valida ? 'border-red-200 bg-red-50/30' : 'border-gray-100'}`}
+              className={`flex-none snap-start bg-white dark:bg-gray-900 border rounded-xl py-3 px-5 shadow-sm flex flex-col items-center justify-between min-w-[150px] transition-colors ${!p.valida ? 'border-red-200 dark:border-red-800 bg-red-50/30 dark:bg-red-950/30' : 'border-gray-100 dark:border-gray-800'}`}
             >
               <div className="flex justify-between items-center w-full mb-2.5">
                 <div className="flex items-center gap-1">
@@ -118,7 +118,7 @@ export function MatchesTicker({ partidas, isLoading }: MatchesTickerProps) {
                 </div>
 
                 {!p.valida && (
-                  <span className="text-[10px] font-bold text-red-600 bg-red-100 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                  <span className="text-[10px] font-bold text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900 px-1.5 py-0.5 rounded uppercase tracking-wider">
                     Inválida
                   </span>
                 )}
@@ -133,11 +133,13 @@ export function MatchesTicker({ partidas, isLoading }: MatchesTickerProps) {
 
                 <div className="flex flex-col items-center justify-center min-w-[40px]">
                   {temPlacar ? (
-                    <span className="text-md font-extrabold text-gray-900 tracking-tighter">
+                    <span className="text-md font-extrabold text-gray-900 dark:text-gray-100 tracking-tighter">
                       {p.placarCasa} - {p.placarVisitante}
                     </span>
                   ) : (
-                    <span className="text-xs font-bold text-gray-300">X</span>
+                    <span className="text-xs font-bold text-gray-300 dark:text-gray-600">
+                      X
+                    </span>
                   )}
                 </div>
 
@@ -148,9 +150,9 @@ export function MatchesTicker({ partidas, isLoading }: MatchesTickerProps) {
                 />
               </div>
 
-              <div className="mt-2.5 pt-2 border-t border-dashed border-gray-100 w-full text-center">
+              <div className="mt-2.5 pt-2 border-t border-dashed border-gray-100 dark:border-gray-700 w-full text-center">
                 <span
-                  className={`text-[10px] font-semibold ${!p.valida ? 'text-red-400' : 'text-gray-400'}`}
+                  className={`text-[10px] font-semibold ${!p.valida ? 'text-red-400' : 'text-gray-400 dark:text-gray-500'}`}
                 >
                   {p.dataStr}
                 </span>

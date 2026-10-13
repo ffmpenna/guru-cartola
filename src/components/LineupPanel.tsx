@@ -108,23 +108,25 @@ export function LineupPanel() {
         />
       )}
 
-      <aside className="fixed bottom-0 left-0 w-full z-50 bg-white rounded-t-3xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] md:relative md:w-[400px] md:shadow-sm md:rounded-2xl md:border md:border-gray-200 md:sticky md:top-[95px] md:h-fit md:z-10">
+      <aside className="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-gray-900 rounded-t-3xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] md:relative md:w-[400px] md:shadow-sm md:rounded-2xl md:border md:border-gray-200 dark:md:border-gray-700 md:sticky md:top-[95px] md:h-fit md:z-10 transition-colors duration-300">
         <div
           className="flex justify-center w-full pt-3 pb-1 cursor-pointer md:hidden"
           onClick={() => setIsMobileExpanded(!isMobileExpanded)}
         >
-          <div className="w-10 h-1.5 bg-gray-300 rounded-full"></div>
+          <div className="w-10 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
         </div>
 
         <div
           onClick={() => setIsMobileExpanded(!isMobileExpanded)}
-          className="flex items-start justify-between px-5 pb-4 pt-1 border-b border-gray-100 md:bg-gray-50/50 md:rounded-t-2xl md:p-5 md:cursor-default"
+          className="flex items-start justify-between px-5 pb-4 pt-1 border-b border-gray-100 dark:border-gray-800 md:bg-gray-50/50 dark:md:bg-gray-800/50 md:rounded-t-2xl md:p-5 md:cursor-default"
         >
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <h3 className="m-0 text-base font-bold text-gray-900">Seu Time</h3>
+              <h3 className="m-0 text-base font-bold text-gray-900 dark:text-gray-100">
+                Seu Time
+              </h3>
               <svg
-                className={`w-4 h-4 text-gray-400 transition-transform duration-300 md:hidden ${isMobileExpanded ? 'rotate-180' : ''}`}
+                className={`w-4 h-4 text-gray-400 dark:text-gray-500 transition-transform duration-300 md:hidden ${isMobileExpanded ? 'rotate-180' : ''}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -137,7 +139,7 @@ export function LineupPanel() {
                 ></path>
               </svg>
             </div>
-            <span className="text-[12px] font-bold text-gray-400 uppercase tracking-wider">
+            <span className="text-[12px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
               {formacao}
             </span>
           </div>
@@ -148,7 +150,7 @@ export function LineupPanel() {
                 <input
                   type="number"
                   autoFocus
-                  className="w-24 px-1 py-0.5 text-lg font-extrabold text-right text-orange-500 bg-orange-50 border border-orange-200 rounded outline-none max-md:text-base max-md:w-20 [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+                  className="w-24 px-1 py-0.5 text-lg font-extrabold text-right text-orange-500 bg-orange-50 dark:bg-orange-950 border border-orange-200 dark:border-orange-800 rounded outline-none max-md:text-base max-md:w-20 [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   value={tempPatrimonio}
                   onChange={(e) => setTempPatrimonio(e.target.value)}
                   onBlur={salvarPatrimonio}
@@ -169,7 +171,7 @@ export function LineupPanel() {
                     C$ {cartoletas.toFixed(2)}
                   </span>
                   <svg
-                    className="w-3.5 h-3.5 text-gray-300 cursor-pointer group-hover:text-gray-400 transition-colors"
+                    className="w-3.5 h-3.5 text-gray-300 dark:text-gray-600 cursor-pointer group-hover:text-gray-400 dark:group-hover:text-gray-500 transition-colors"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -185,7 +187,7 @@ export function LineupPanel() {
               )}
             </div>
 
-            <span className="text-[10px] font-semibold text-gray-400">
+            <span className="text-[10px] font-semibold text-gray-400 dark:text-gray-500">
               {`${time.length}/12 Titulares • ${reservas.length}/${slotsDoBanco.length} Reservas`}
             </span>
 
@@ -221,8 +223,8 @@ export function LineupPanel() {
             </div>
 
             {/* BANCO DE RESERVAS */}
-            <div className="pt-3 border-t border-gray-100">
-              <h4 className="mb-3 text-[10px] font-black tracking-widest text-gray-400 uppercase">
+            <div className="pt-3 border-t border-gray-100 dark:border-gray-800">
+              <h4 className="mb-3 text-[10px] font-black tracking-widest text-gray-400 dark:text-gray-500 uppercase">
                 Banco de Reservas
               </h4>
               <div

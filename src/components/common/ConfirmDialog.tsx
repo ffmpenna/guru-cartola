@@ -17,15 +17,15 @@ export function ConfirmDialog({
 }: ConfirmDialogProps) {
   return (
     <div className="fixed inset-0 z-[99999] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm animate-fade-in">
-      <div className="bg-white rounded-3xl p-6 w-full max-w-[320px] shadow-2xl flex flex-col gap-4 transform transition-all">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl p-6 w-full max-w-[320px] shadow-2xl flex flex-col gap-4 transform transition-all">
         <div className="flex flex-col gap-1.5 text-center">
-          <h4 className="text-lg font-bold text-gray-900 m-0">{title}</h4>
-          <p className="text-xs font-medium text-gray-500 m-0">{description}</p>
+          <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 m-0">{title}</h4>
+          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 m-0">{description}</p>
         </div>
         <div className="flex gap-3 mt-2">
           <button
             onClick={onCancel}
-            className="flex-1 px-4 py-3 text-xs font-bold uppercase tracking-wide text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 active:scale-95 transition-all cursor-pointer"
+            className="flex-1 px-4 py-3 text-xs font-bold uppercase tracking-wide text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 active:scale-95 transition-all cursor-pointer"
           >
             {cancelText}
           </button>

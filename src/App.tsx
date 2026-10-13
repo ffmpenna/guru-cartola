@@ -14,6 +14,7 @@ import { usePlayerFilter } from './hooks/usePlayerFilter';
 import { PlayerGrid } from './components/dashboard/PlayerGrid';
 import { ReserveSearchBanner } from './components/dashboard/ReserveSearchBanner';
 import { mapaFormacao } from './hooks/useLineupManager';
+import { ThemeProvider } from './hooks/useTheme';
 
 const queryClient = new QueryClient();
 
@@ -63,7 +64,7 @@ function Dashboard() {
   );
 
   return (
-    <div className="min-h-screen font-sans antialiased text-gray-900 bg-gray-50">
+    <div className="min-h-screen font-sans antialiased text-gray-900 bg-gray-50 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
       <SmartHeader
         ordenacao={ordenacao}
         termoBusca={termoBusca}
@@ -72,14 +73,21 @@ function Dashboard() {
         setTermoBusca={setTermoBusca}
       />
 
-      <div className="pt-6 pb-[100px] md:pt-[120px] md:pb-10 max-w-[1400px] mx-auto md:px-12">
-        <MatchesTicker partidas={partidas} isLoading={isLoading} />
-        {isMercadoAberto || openMaster ? (
-          <main className="flex flex-col-reverse items-start gap-8 px-6 md:grid md:grid-cols-[1fr_400px] md:px-0">
-            <div className="flex flex-col w-full gap-8 min-w-0">
-              {isLoading ? (
-                <div className="flex flex-col items-center justify-center py-20 text-gray-400 animate-pulse">
-                  <div className="w-12 h-12 mb-4 border-4 border-gray-200 rounded-full border-t-orange-500 animate-spin"></div>
+      <div className="pt-6 pb-[100px] md:pt-[95px] md:pb-10 max-w-[1400px] mx-auto md:px-12">
+        <main
+          className={
+            isMercadoAberto || openMaster
+              ? 'flex flex-col-reverse items-start gap-8 px-6 md:grid md:grid-cols-[1fr_400px] md:px-0'
+              : 'flex flex-col items-start gap-8 px-6 md:px-0'
+          }
+        >
+          <div className="flex flex-col w-full gap-8 min-w-0">
+            <MatchesTicker partidas={partidas} isLoading={isLoading} />
+
+            {isMercadoAberto || openMaster ? (
+              isLoading ? (
+                <div className="flex flex-col items-center justify-center py-20 text-gray-400 dark:text-gray-500 animate-pulse">
+                  <div className="w-12 h-12 mb-4 border-4 border-gray-200 dark:border-gray-700 rounded-full border-t-orange-500 animate-spin"></div>
                   <p className="font-bold uppercase tracking-wider text-sm">
                     Buscando Mercado...
                   </p>
@@ -96,10 +104,10 @@ function Dashboard() {
               ) : isBuscando ? (
                 <div className="flex flex-col gap-4 animate-fade-in">
                   <div className="flex items-center justify-between mb-2">
-                    <h2 className="text-sm font-extrabold tracking-tight text-gray-900 uppercase">
+                    <h2 className="text-sm font-extrabold tracking-tight text-gray-900 dark:text-gray-100 uppercase">
                       Resultados para "{termoBusca}"
                     </h2>
-                    <span className="text-xs font-bold text-gray-400">
+                    <span className="text-xs font-bold text-gray-400 dark:text-gray-500">
                       {jogadoresFiltradosBusca.length} encontrados
                     </span>
                   </div>
@@ -124,16 +132,16 @@ function Dashboard() {
                     />
                   );
                 })
-              )}
-            </div>
-
-            <LineupPanel />
-          </main>
-        ) : (
-          <div className="max-w-4xl">
-            <PranchetaAoVivo />
+              )
+            ) : (
+              <div className="max-w-4xl">
+                <PranchetaAoVivo />
+              </div>
+            )}
           </div>
-        )}
+
+          {(isMercadoAberto || openMaster) && <LineupPanel />}
+        </main>
       </div>
     </div>
   );
@@ -142,9 +150,11 @@ function Dashboard() {
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <EscalacaoProvider>
-        <Dashboard />
-      </EscalacaoProvider>
+      <ThemeProvider>
+        <EscalacaoProvider>
+          <Dashboard />
+        </EscalacaoProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

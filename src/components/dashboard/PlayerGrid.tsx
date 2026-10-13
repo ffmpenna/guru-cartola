@@ -14,7 +14,7 @@ export function PlayerGrid({
 }: PlayerGridProps) {
   if (jogadores.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center w-full py-12 bg-white border border-dashed border-gray-200 rounded-xl text-gray-400">
+      <div className="flex flex-col items-center justify-center w-full py-12 dark:bg-gray-800 border border-dashed dark:border-gray-600 rounded-xl text-gray-400">
         <p className="m-0 text-sm font-medium">{emptyMessage}</p>
       </div>
     );

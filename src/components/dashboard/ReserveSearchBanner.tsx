@@ -18,18 +18,18 @@ export function ReserveSearchBanner() {
   const precoMaximoReserva = getPrecoMaximoReserva(modoBuscaReserva);
 
   return (
-    <div className="flex items-center justify-between p-4 bg-orange-50 border border-orange-200 rounded-xl shadow-sm">
+    <div className="flex items-center justify-between p-4 bg-orange-50 dark:bg-orange-950 border border-orange-200 dark:border-orange-800 rounded-xl shadow-sm">
       <div className="flex flex-col gap-1">
-        <span className="text-sm font-extrabold text-orange-900 uppercase tracking-tight">
+        <span className="text-sm font-extrabold text-orange-900 dark:text-orange-200 uppercase tracking-tight">
           Buscando Reserva: {nomesPosicoes[modoBuscaReserva]}
         </span>
-        <span className="text-xs font-bold text-orange-600">
+        <span className="text-xs font-bold text-orange-600 dark:text-orange-400">
           Preço Máximo: C$ {precoMaximoReserva.toFixed(2)}
         </span>
       </div>
       <button
         onClick={() => setModoBuscaReserva(null)}
-        className="px-4 py-2 bg-white border border-orange-200 rounded-lg text-xs font-bold text-orange-600 shadow-sm active:scale-95 transition-all hover:bg-orange-100"
+        className="px-4 py-2 bg-white dark:bg-gray-800 border border-orange-200 dark:border-orange-800 rounded-lg text-xs font-bold text-orange-600 dark:text-orange-400 shadow-sm active:scale-95 transition-all hover:bg-orange-100 dark:hover:bg-orange-950"
       >
         Cancelar
       </button>

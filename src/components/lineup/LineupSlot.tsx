@@ -34,7 +34,7 @@ export function LineupSlot({
 
     return (
       <div
-        className={`flex items-center justify-between p-2 transition-all shadow-sm rounded-xl group ${isReserva ? 'bg-gray-50 border border-gray-200' : 'bg-white border border-gray-100 hover:border-gray-300'}`}
+        className={`flex items-center justify-between p-2 transition-all shadow-sm rounded-xl group ${isReserva ? 'bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700' : 'bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-600'}`}
       >
         <div className="flex items-center gap-2 min-w-0">
           <img
@@ -43,13 +43,13 @@ export function LineupSlot({
               'https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/clubes_2026/silhuetas/DEFAULT/140x140.png'
             }
             alt={atleta.nome}
-            className={`object-cover shrink-0 ${isReserva ? 'w-7 h-7 bg-white border border-gray-200 rounded-full' : 'w-8 h-8 bg-gray-100 rounded-full'}`}
+            className={`object-cover shrink-0 ${isReserva ? 'w-7 h-7 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full' : 'w-8 h-8 bg-gray-100 dark:bg-gray-800 rounded-full'}`}
           />
           <div className="flex flex-col min-w-0">
-            <span className="text-xs font-bold text-gray-900 leading-tight truncate max-w-[70px] md:max-w-[90px]">
+            <span className="text-xs font-bold text-gray-900 dark:text-gray-100 leading-tight truncate max-w-[70px] md:max-w-[90px]">
               {nomeFormatado}
             </span>
-            <span className="text-[9px] font-semibold text-gray-400 uppercase truncate">
+            <span className="text-[9px] font-semibold text-gray-400 dark:text-gray-500 uppercase truncate">
               {nomePosicao}
             </span>
             <span className="text-[12px] font-extrabold text-orange-400">
@@ -73,7 +73,7 @@ export function LineupSlot({
                   onSetCapitao(capitaoId === atleta.id ? null : atleta.id);
               }}
               title={capitaoId === atleta.id ? 'Remover Capitão' : 'Definir Capitão'}
-              className={`flex items-center justify-center w-6 h-6 rounded font-black text-[10px] transition-all cursor-pointer shadow-sm active:scale-90 ${capitaoId === atleta.id ? 'bg-orange-500 text-white border-orange-600' : 'bg-gray-100 text-gray-400 border border-transparent md:opacity-0 md:group-hover:opacity-100 hover:bg-orange-50 hover:text-orange-500 hover:border-orange-200'}`}
+              className={`flex items-center justify-center w-6 h-6 rounded font-black text-[10px] transition-all cursor-pointer shadow-sm active:scale-90 ${capitaoId === atleta.id ? 'bg-orange-500 text-white border-orange-600' : 'bg-gray-100 dark:bg-gray-700 text-gray-400 border border-transparent md:opacity-0 md:group-hover:opacity-100 hover:bg-orange-50 dark:hover:bg-orange-950 hover:text-orange-500 hover:border-orange-200'}`}
             >
               C
             </button>
@@ -83,7 +83,7 @@ export function LineupSlot({
               e.stopPropagation();
               if (onRemoveJogador) onRemoveJogador(atleta);
             }}
-            className="flex items-center justify-center w-6 h-6 text-gray-400 transition-colors border border-gray-200 rounded cursor-pointer md:opacity-0 md:group-hover:opacity-100 hover:text-red-500 hover:bg-red-50 hover:border-red-200 focus:outline-none active:scale-90 bg-gray-50"
+            className="flex items-center justify-center w-6 h-6 text-gray-400 transition-colors border border-gray-200 dark:border-gray-700 rounded cursor-pointer md:opacity-0 md:group-hover:opacity-100 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950 hover:border-red-200 focus:outline-none active:scale-90 bg-gray-50 dark:bg-gray-800"
           >
             <svg
               width="12"
@@ -118,21 +118,21 @@ export function LineupSlot({
         className={`flex items-center gap-2.5 p-2 border-2 border-dashed rounded-xl transition-all w-full text-left
           ${
             isBuscandoEstaPosicao
-              ? 'border-orange-400 bg-orange-50/50 opacity-100 shadow-inner'
+              ? 'border-orange-400 bg-orange-50/50 dark:bg-orange-950/50 opacity-100 shadow-inner'
               : podeAdicionarReserva
-                ? 'border-gray-200 bg-gray-50/50 hover:bg-orange-50 hover:border-orange-200 opacity-100 cursor-pointer'
-                : 'border-gray-200 bg-gray-50/30 opacity-50 cursor-not-allowed'
+                ? 'border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50 hover:bg-orange-50 dark:hover:bg-orange-950 hover:border-orange-200 opacity-100 cursor-pointer'
+                : 'border-gray-200 dark:border-gray-700 bg-gray-50/30 dark:bg-gray-800/30 opacity-50 cursor-not-allowed'
           }`}
       >
         <div
-          className={`flex items-center justify-center w-7 h-7 rounded-full shrink-0 transition-colors ${isBuscandoEstaPosicao || podeAdicionarReserva ? 'bg-orange-100 text-orange-500' : 'bg-gray-200/50 text-gray-400'}`}
+          className={`flex items-center justify-center w-7 h-7 rounded-full shrink-0 transition-colors ${isBuscandoEstaPosicao || podeAdicionarReserva ? 'bg-orange-100 dark:bg-orange-900 text-orange-500' : 'bg-gray-200/50 dark:bg-gray-700/50 text-gray-400'}`}
         >
           <span className="text-[12px] font-black leading-none pb-[1px]">
             {podeAdicionarReserva ? '+' : '?'}
           </span>
         </div>
         <div className="flex items-center gap-1.5 min-w-0">
-          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wide truncate">
+          <span className="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">
             {podeAdicionarReserva ? nomePosicao : nomePosicao}
           </span>
         </div>
@@ -142,11 +142,11 @@ export function LineupSlot({
 
   // Slot Vazio do Titular
   return (
-    <div className="flex items-center gap-2.5 p-2 border border-dashed border-gray-200 bg-gray-50/50 rounded-xl opacity-70">
-      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200/50 shrink-0">
-        <span className="text-xs font-bold text-gray-400">?</span>
+    <div className="flex items-center gap-2.5 p-2 border border-dashed border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50 rounded-xl opacity-70">
+      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200/50 dark:bg-gray-700/50 shrink-0">
+        <span className="text-xs font-bold text-gray-400 dark:text-gray-500">?</span>
       </div>
-      <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wide truncate">
+      <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wide truncate">
         {nomePosicao}
       </span>
     </div>

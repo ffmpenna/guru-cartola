@@ -71,13 +71,13 @@ export function PlayerCard({ atleta, tipoOrdenacao, index = 0 }: PlayerCardProps
   const borderColor = escaladoTitular
     ? 'border-orange-500'
     : escaladoReserva
-      ? 'border-gray-400'
-      : 'border-black/5';
+      ? 'border-gray-400 dark:border-gray-500'
+      : 'border-black/5 dark:border-gray-700';
   const bgColor = escaladoTitular
-    ? 'bg-orange-50/20'
+    ? 'bg-orange-50/20 dark:bg-orange-950/30'
     : escaladoReserva
-      ? 'bg-gray-50/50'
-      : 'bg-white';
+      ? 'bg-gray-50/50 dark:bg-gray-800/50'
+      : 'bg-white dark:bg-gray-900';
 
   return (
     <article
@@ -90,20 +90,20 @@ export function PlayerCard({ atleta, tipoOrdenacao, index = 0 }: PlayerCardProps
             atleta.foto ||
             'https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/clubes_2026/silhuetas/VAS/FORMATO.png'
           }
-          className="object-cover w-14 h-14 bg-gray-100 rounded-full shrink-0"
+          className="object-cover w-14 h-14 bg-gray-100 dark:bg-gray-800 rounded-full shrink-0"
           alt={atleta.nome}
           loading="lazy"
         />
         <div className="flex flex-col items-start w-full gap-1">
-          <h3 className="m-0 text-base font-bold leading-tight text-gray-900">
+          <h3 className="m-0 text-base font-bold leading-tight text-gray-900 dark:text-gray-100">
             {atleta.nome}
           </h3>
           <div className="flex flex-col items-start mt-1 gap-1.5">
-            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-[9px] font-bold uppercase rounded-md tracking-[0.02em]">
+            <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-[9px] font-bold uppercase rounded-md tracking-[0.02em]">
               {atleta.clubeMandante} x {atleta.clubeVisitante}
             </span>
             <span
-              className={`px-2 py-1 text-[9px] font-extrabold uppercase rounded-md tracking-[0.05em] ${isCasa ? 'bg-emerald-50 text-emerald-600' : 'bg-blue-50 text-blue-600'}`}
+              className={`px-2 py-1 text-[9px] font-extrabold uppercase rounded-md tracking-[0.05em] ${isCasa ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400' : 'bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400'}`}
             >
               {atleta.local}
             </span>
@@ -111,33 +111,33 @@ export function PlayerCard({ atleta, tipoOrdenacao, index = 0 }: PlayerCardProps
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-2 py-4 border-y border-dashed border-gray-100">
+      <div className="grid grid-cols-4 gap-2 py-4 border-y border-dashed border-gray-100 dark:border-gray-700">
         <div className="flex flex-col gap-0.5">
-          <span className="text-[11px] font-semibold text-gray-400">Preço</span>
+          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">Preço</span>
           <span
-            className={`text-sm font-bold ${isSemSaldoTitular && !escaladoTitular && !escaladoReserva ? 'text-red-500' : 'text-gray-900'}`}
+            className={`text-sm font-bold ${isSemSaldoTitular && !escaladoTitular && !escaladoReserva ? 'text-red-500' : 'text-gray-900 dark:text-gray-100'}`}
           >
             C$ {formatarNumero(atleta.preco)}
           </span>
         </div>
         <div className="flex flex-col gap-0.5">
-          <span className="text-[11px] font-semibold text-gray-400">Média</span>
-          <span className="text-sm font-bold text-gray-900">
+          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">Média</span>
+          <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {formatarNumero(atleta.media)}
           </span>
-          <span className="mt-[1px] text-[9px] font-semibold text-gray-400">
+          <span className="mt-[1px] text-[9px] font-semibold text-gray-400 dark:text-gray-500">
             {atleta.jogos10} jogo(s)
           </span>
         </div>
         <div className="flex flex-col gap-0.5">
-          <span className="text-[11px] font-semibold text-gray-400">Mínimo</span>
-          <span className="text-sm font-bold text-gray-900">
+          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">Mínimo</span>
+          <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {formatarNumero(atleta.minimo)}
           </span>
         </div>
         <div className="flex flex-col gap-0.5">
-          <span className="text-[11px] font-semibold text-gray-400">Pts Esper.</span>
-          <span className="text-sm font-bold text-gray-900">
+          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">Pts Esper.</span>
+          <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {formatarNumero(atleta.pontuacaoEsperada)}
           </span>
         </div>
@@ -186,8 +186,8 @@ export function PlayerCard({ atleta, tipoOrdenacao, index = 0 }: PlayerCardProps
                 }
                 className={`flex items-center justify-center w-10 h-10 rounded-xl transition-all shadow-sm active:scale-95 shrink-0 cursor-pointer ${
                   botaoReservaBloqueado
-                    ? 'bg-gray-100 text-gray-300 cursor-not-allowed opacity-50'
-                    : 'bg-white border-2 border-gray-200 text-gray-500 hover:border-orange-300 hover:text-orange-500 hover:bg-orange-50'
+                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-300 dark:text-gray-600 cursor-not-allowed opacity-50'
+                    : 'bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-500 hover:border-orange-300 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-950'
                 }`}
               >
                 <span className="text-sm font-black">R</span>
@@ -205,7 +205,7 @@ export function PlayerCard({ atleta, tipoOrdenacao, index = 0 }: PlayerCardProps
                   escaladoTitular
                     ? 'bg-red-500 text-white shadow-md hover:bg-red-600 active:scale-95 cursor-pointer'
                     : botaoTitularBloqueado
-                      ? 'bg-gray-200 text-gray-400 cursor-not-allowed opacity-70'
+                      ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed opacity-70'
                       : 'bg-orange-500 text-white shadow-md hover:bg-orange-600 active:scale-95 cursor-pointer'
                 }`}
             >

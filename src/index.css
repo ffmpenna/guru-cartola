@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --animate-fade-slide-up: fadeSlideUp 0.4s ease-out forwards;
 

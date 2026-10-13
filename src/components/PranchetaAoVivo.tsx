@@ -51,9 +51,9 @@ export function PranchetaAoVivo() {
 
   if (time.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center p-12 text-center bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
-        <p className="font-semibold text-gray-500">Seu time está vazio.</p>
-        <p className="text-sm text-gray-400">
+      <div className="flex flex-col items-center justify-center p-12 text-center bg-gray-50 dark:bg-gray-900 rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-700">
+        <p className="font-semibold text-gray-500 dark:text-gray-400">Seu time está vazio.</p>
+        <p className="text-sm text-gray-400 dark:text-gray-500">
           Abra o mercado para escalar seus jogadores antes de acompanhar a rodada.
         </p>
       </div>
@@ -71,26 +71,26 @@ export function PranchetaAoVivo() {
     const scoutsEntries = Object.entries(liveData.scout || {});
 
     return (
-      <div className="relative flex flex-col p-4 transition-transform bg-white border border-gray-100 rounded-xl gap-4 shadow-sm hover:-translate-y-1">
+      <div className="relative flex flex-col p-4 transition-transform bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl gap-4 shadow-sm hover:-translate-y-1">
         <div className="flex items-start justify-between w-full mt-2">
           <div className="flex items-center gap-4">
             <div className="relative">
               <img
                 src={atleta.foto || 'https://via.placeholder.com/150'}
                 alt={atleta.apelido}
-                className="object-cover w-16 h-16 bg-gray-100 border-2 border-gray-100 rounded-full"
+                className="object-cover w-16 h-16 bg-gray-100 dark:bg-gray-800 border-2 border-gray-100 dark:border-gray-800 rounded-full"
               />
               {isCapitao && (
-                <div className="absolute flex items-center justify-center w-8 h-8 text-xs font-black text-white bg-orange-500 border-2 border-white rounded-full shadow-sm -bottom-2 -right-2">
+                <div className="absolute flex items-center justify-center w-8 h-8 text-xs font-black text-white bg-orange-500 border-2 border-white dark:border-gray-900 rounded-full shadow-sm -bottom-2 -right-2">
                   C
                 </div>
               )}
             </div>
             <div className="flex flex-col">
-              <h3 className="text-lg font-bold leading-tight text-gray-900">
+              <h3 className="text-lg font-bold leading-tight text-gray-900 dark:text-gray-100">
                 {atleta.apelido || atleta.nome}
               </h3>
-              <span className="mt-0.5 text-xs font-bold tracking-widest text-gray-400 uppercase">
+              <span className="mt-0.5 text-xs font-bold tracking-widest text-gray-400 dark:text-gray-500 uppercase">
                 {nomesPosicoes[atleta.posicao_id]}
               </span>
             </div>
@@ -99,16 +99,16 @@ export function PranchetaAoVivo() {
           <div className="flex flex-col items-end justify-center min-w-[90px] md:min-w-[120px]">
             {isCapitao && (
               <div className="flex items-center gap-1.5 mb-1">
-                <span className="text-[11px] md:text-sm font-bold text-gray-400 line-through decoration-gray-300">
+                <span className="text-[11px] md:text-sm font-bold text-gray-400 dark:text-gray-500 line-through decoration-gray-300 dark:decoration-gray-600">
                   {liveData.pontuacao.toFixed(2)}
                 </span>
-                <span className="px-1.5 py-0.5 md:px-2 md:py-1 text-[9px] md:text-[11px] font-black text-orange-600 bg-orange-100 border border-orange-200 rounded text-center leading-none tracking-wider">
+                <span className="px-1.5 py-0.5 md:px-2 md:py-1 text-[9px] md:text-[11px] font-black text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900 border border-orange-200 dark:border-orange-800 rounded text-center leading-none tracking-wider">
                   x1.5
                 </span>
               </div>
             )}
             <span
-              className={`text-2xl md:text-4xl font-black leading-none tracking-tighter ${pontosFinais >= 0 ? 'text-emerald-500' : pontosFinais === 0 ? 'text-gray-900' : 'text-red-500'}`}
+              className={`text-2xl md:text-4xl font-black leading-none tracking-tighter ${pontosFinais >= 0 ? 'text-emerald-500' : pontosFinais === 0 ? 'text-gray-900 dark:text-gray-100' : 'text-red-500'}`}
             >
               {pontosFinais.toFixed(2)}
             </span>
@@ -124,18 +124,18 @@ export function PranchetaAoVivo() {
           </div>
         </div>
 
-        <div className="flex flex-wrap w-full gap-2 pt-3 mt-1 border-t border-gray-100/50">
+        <div className="flex flex-wrap w-full gap-2 pt-3 mt-1 border-t border-gray-100/50 dark:border-gray-700/50">
           {scoutsEntries.length > 0 ? (
             scoutsEntries.map(([sigla, valor]) => (
               <span
                 key={sigla}
-                className="px-2.5 py-1 text-[11px] font-bold text-gray-600 bg-gray-50 border border-gray-100 rounded-md"
+                className="px-2.5 py-1 text-[11px] font-bold text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-md"
               >
                 {sigla}: {valor as React.ReactNode}
               </span>
             ))
           ) : (
-            <span className="text-[11px] font-bold text-gray-400">
+            <span className="text-[11px] font-bold text-gray-400 dark:text-gray-500">
               {isMercadoAberto ? 'Rodada não iniciada.' : 'Sem ações registradas.'}
             </span>
           )}
@@ -148,7 +148,7 @@ export function PranchetaAoVivo() {
     <div className="flex flex-col w-full gap-6 px-6 md:px-0 animate-fade-in">
       <div className="grid grid-cols-2 p-6 text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl shadow-lg md:grid-cols-3 gap-4">
         <div className="flex flex-col">
-          <h2 className="text-sm font-bold tracking-widest text-gray-400 uppercase">
+          <h2 className="text-sm font-bold tracking-widest text-gray-400 dark:text-gray-500 uppercase">
             Pontuação
           </h2>
           <div className="flex items-baseline gap-1 mt-1">
@@ -159,7 +159,7 @@ export function PranchetaAoVivo() {
           </div>
         </div>
         <div className="flex flex-col md:items-center">
-          <h2 className="text-sm font-bold tracking-widest text-gray-400 uppercase">
+          <h2 className="text-sm font-bold tracking-widest text-gray-400 dark:text-gray-500 uppercase">
             Patrimônio
           </h2>
           <div className="flex items-center flex-wrap gap-2 mt-1">
@@ -201,8 +201,8 @@ export function PranchetaAoVivo() {
       </div>
 
       {reservas.length > 0 && (
-        <div className="flex flex-col gap-3 pt-6 mt-2 border-t border-gray-200 border-dashed animate-fade-in">
-          <h3 className="text-[10px] font-black tracking-widest text-gray-400 uppercase ml-1">
+        <div className="flex flex-col gap-3 pt-6 mt-2 border-t border-gray-200 dark:border-gray-700 border-dashed animate-fade-in">
+          <h3 className="text-[10px] font-black tracking-widest text-gray-400 dark:text-gray-500 uppercase ml-1">
             Banco de Reservas
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
